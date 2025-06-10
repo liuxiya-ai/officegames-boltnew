@@ -1,0 +1,236 @@
+---
+const categories = [
+	{ id: 'editors-choice', name: "Editor's Choice", icon: '⭐' },
+	{ id: 'newly-added', name: 'Newly Added', icon: '🆕' },
+	{ id: 'most-popular', name: 'Most Popular', icon: '🔥' },
+	{ id: 'quick-break', name: 'Quick Break Games', icon: '⚡' },
+	{ id: 'team-building', name: 'Team Building Essentials', icon: '🤝' },
+	{ id: 'remote-team', name: 'Remote Team Activities', icon: '💻' },
+	{ id: 'meeting-engagement', name: 'Meeting Engagement Games', icon: '🎯' },
+	{ id: 'lunch-break', name: 'Lunch Break Entertainment', icon: '🍽️' },
+	{ id: 'friday-fun', name: 'Friday Fun', icon: '🎉' }
+];
+---
+
+<aside class="sidebar">
+	<div class="sidebar-header">
+		<h2>Game Categories</h2>
+	</div>
+	<nav class="sidebar-nav">
+		<ul class="category-list">
+			{categories.map((category) => (
+				<li>
+					<button 
+						class="category-item" 
+						data-category={category.id}
+						id={`cat-${category.id}`}
+					>
+						<span class="category-icon">{category.icon}</span>
+						<span class="category-name">{category.name}</span>
+					</button>
+				</li>
+			))}
+		</ul>
+	</nav>
+
+	<div class="filters-section">
+		<h3 class="filters-title">Filters</h3>
+		
+		<div class="filter-group">
+			<label class="filter-label">Game Duration</label>
+			<select class="filter-select" id="durationFilter">
+				<option value="">All Durations</option>
+				<option value="very-short">Super Quick (1-5 min)</option>
+				<option value="short">Short (5-15 min)</option>
+				<option value="medium">Medium (15-30 min)</option>
+				<option value="long">Long (30+ min)</option>
+			</select>
+		</div>
+
+		<div class="filter-group">
+			<label class="filter-label">Player Count</label>
+			<select class="filter-select" id="playerCountFilter">
+				<option value="">All Sizes</option>
+				<option value="individual">Individual (1 player)</option>
+				<option value="small">Small Team (2-5 players)</option>
+				<option value="medium">Medium Team (6-15 players)</option>
+				<option value="large">Large Team (15+ players)</option>
+			</select>
+		</div>
+
+		<div class="filter-group">
+			<label class="filter-label">Game Type</label>
+			<select class="filter-select" id="gameTypeFilter">
+				<option value="">All Types</option>
+				<option value="casual">Casual Games</option>
+				<option value="strategy">Strategy Games</option>
+				<option value="puzzle">Puzzle & Brain Games</option>
+				<option value="team-building">Team Building</option>
+				<option value="social">Social & Party</option>
+			</select>
+		</div>
+
+		<div class="filter-group">
+			<label class="filter-label">Work Setting</label>
+			<select class="filter-select" id="settingFilter">
+				<option value="">All Settings</option>
+				<option value="remote">Remote Work</option>
+				<option value="office">In-Office</option>
+				<option value="meeting">Meeting Activities</option>
+				<option value="break">Break Time</option>
+			</select>
+		</div>
+
+		<div class="filter-group">
+			<label class="filter-label">Tech Requirements</label>
+			<select class="filter-select" id="techFilter">
+				<option value="">All Tech</option>
+				<option value="browser">Browser Game</option>
+				<option value="app">Mobile App</option>
+				<option value="no-device">No Device Needed</option>
+				<option value="platform">Specific Platform</option>
+			</select>
+		</div>
+
+		<button class="clear-filters-btn" id="clearFilters">
+			Clear All Filters
+		</button>
+	</div>
+</aside>
+
+<style>
+	.sidebar {
+		width: 300px;
+		background: white;
+		border-right: 1px solid #e2e8f0;
+		height: 100vh;
+		overflow-y: auto;
+		position: sticky;
+		top: 0;
+		padding: 1.5rem 0;
+	}
+
+	.sidebar-header {
+		padding: 0 1.5rem 1rem;
+		border-bottom: 1px solid #f1f5f9;
+		margin-bottom: 1rem;
+	}
+
+	.sidebar-header h2 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: #1e293b;
+	}
+
+	.category-list {
+		list-style: none;
+		margin-bottom: 2rem;
+	}
+
+	.category-item {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		padding: 0.75rem 1.5rem;
+		border: none;
+		background: none;
+		color: #475569;
+		font-size: 0.95rem;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		border-left: 3px solid transparent;
+	}
+
+	.category-item:hover {
+		background: #f8fafc;
+		color: #3b82f6;
+		border-left-color: #3b82f6;
+	}
+
+	.category-item.active {
+		background: #eff6ff;
+		color: #3b82f6;
+		border-left-color: #3b82f6;
+		font-weight: 500;
+	}
+
+	.category-icon {
+		margin-right: 0.75rem;
+		font-size: 1.1rem;
+	}
+
+	.filters-section {
+		padding: 0 1.5rem;
+		border-top: 1px solid #f1f5f9;
+		padding-top: 1.5rem;
+	}
+
+	.filters-title {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: #1e293b;
+		margin-bottom: 1rem;
+	}
+
+	.filter-group {
+		margin-bottom: 1rem;
+	}
+
+	.filter-label {
+		display: block;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: #374151;
+		margin-bottom: 0.5rem;
+	}
+
+	.filter-select {
+		width: 100%;
+		padding: 0.5rem 0.75rem;
+		border: 1px solid #d1d5db;
+		border-radius: 8px;
+		background: white;
+		font-size: 0.875rem;
+		color: #374151;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.filter-select:focus {
+		outline: none;
+		border-color: #3b82f6;
+		box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+	}
+
+	.clear-filters-btn {
+		width: 100%;
+		padding: 0.625rem;
+		margin-top: 1rem;
+		background: #f1f5f9;
+		border: 1px solid #e2e8f0;
+		border-radius: 8px;
+		color: #64748b;
+		font-size: 0.875rem;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.clear-filters-btn:hover {
+		background: #e2e8f0;
+		color: #475569;
+	}
+
+	@media (max-width: 1024px) {
+		.sidebar {
+			position: fixed;
+			left: -300px;
+			z-index: 1000;
+			transition: left 0.3s ease;
+			box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.sidebar.open {
+			left: 0;
+		}
+	}
+</style>

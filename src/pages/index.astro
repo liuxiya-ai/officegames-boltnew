@@ -1,0 +1,604 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import GameGrid from '../components/GameGrid.astro';
+import { games } from '../data/games.ts';
+---
+
+<Layout>
+	<Header />
+	<div class="app-container">
+		<Sidebar />
+		<GameGrid games={games} />
+	</div>
+</Layout>
+
+<script>
+	// Game filtering and search functionality
+	const games = [
+		{
+			id: '1',
+			name: 'Two Truths and a Lie',
+			description: 'A classic icebreaker where players share three statements about themselves - two true and one false. Perfect for team building and getting to know colleagues better.',
+			image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',
+			duration: 'short',
+			playerCount: 'small',
+			gameType: 'social',
+			setting: 'meeting',
+			techRequirement: 'no-device',
+			category: ['team-building', 'meeting-engagement', 'editors-choice'],
+			tags: ['5-15 min', 'Small Team', 'Social'],
+			link: '#',
+			featured: true
+		},
+		{
+			id: '2',
+			name: 'Online Trivia Challenge',
+			description: 'Interactive trivia game with workplace-friendly questions. Multiple categories including general knowledge, pop culture, and fun facts to engage remote teams.',
+			image: 'https://images.pexels.com/photos/355948/pexels-photo-355948.jpeg?auto=compress&cs=tinysrgb&w=400',
+			duration: 'medium',
+			playerCount: 'medium',
+			gameType: 'puzzle',
+			setting: 'remote',
+			techRequirement: 'browser',
+			category: ['remote-team', 'friday-fun', 'most-popular'],
+			tags: ['15-30 min', 'Medium Team', 'Trivia'],
+			link: '#'
+		},
+		{
+			id: '3',
+			name: 'Quick Draw Challenge',
+			description: 'Fast-paced drawing game perfect for short breaks. Players draw prompts while others guess. Great for creativity and laughs during busy workdays.',
+			image: 'https://images.pexels.com/photos/3803517/pexels-photo-3803517.jpeg?auto=compress&cs=tinysrgb&w=400',
+			duration: 'very-short',
+			playerCount: 'small',
+			gameType: 'casual',
+			setting: 'break',
+			techRequirement: 'browser',
+			category: ['quick-break', 'lunch-break', 'newly-added'],
+			tags: ['1-5 min', 'Small Team', 'Creative'],
+			link: '#'
+		},
+		{
+			id: '4',
+			name: 'Virtual Escape Room',
+			description: 'Collaborative puzzle-solving adventure that builds teamwork. Teams work together to solve clues and escape within the time limit. Excellent for team bonding.',
+			image: 'https://images.pexels.com/photos/4545982/pexels-photo-4545982.jpeg?auto=compress&cs=tinysrgb&w=400',
+			duration: 'long',
+			playerCount: 'medium',
+			gameType: 'team-building',
+			setting: 'remote',
+			techRequirement: 'platform',
+			category: ['team-building', 'remote-team', 'editors-choice'],
+			tags: ['30+ min', 'Medium Team', 'Puzzle'],
+			link: '#'
+		},
+		{
+			id: '5',
+			name: 'Word Association Sprint',
+			description: 'Lightning-fast word game where players build chains of associated words. Perfect brain exercise for busy professionals looking for a quick mental break.',
+			image: 'https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=400',
+			duration: 'very-short',
+			playerCount: 'individual',
+			gameType: 'puzzle',
+			setting: 'break',
+			techRequirement: 'no-device',
+			category: ['quick-break', 'newly-added'],
+			tags: ['1-5 min', 'Individual', 'Brain Game'],
+			link: '#'
+		},
+		{
+			id: '6',
+			name: 'Virtual Bingo - Office Edition',
+			description: 'Office-themed bingo with workplace scenarios and remote work situations. Great for meetings and team calls to keep everyone engaged.',
+			image: 'https://images.pexels.com/photos/8761815/pexels-photo-8761815.jpeg?auto=compress&cs=tinysrgb&w=400',
+			duration: 'medium',
+			playerCount: 'large',
+			gameType: 'social',
+			setting: 'meeting',
+			techRequirement: 'browser',
+			category: ['meeting-engagement', 'remote-team', 'most-popular'],
+			tags: ['15-30 min', 'Large Team', 'Interactive'],
+			link: '#',
+			featured: true
+		},
+		{
+			id: '7',
+			name: 'Strategy Showdown',
+			description: 'Turn-based strategy game that challenges critical thinking. Players make tactical decisions in bite-sized sessions perfect for lunch breaks.',
+			image: 'https://images.pexels.com/photos/1040157/pexels-photo-1040157.jpeg?auto=compress&cs=tinysrgb&w=400',
+			duration: 'medium',
+			playerCount: 'small',
+			gameType: 'strategy',
+			setting: 'office',
+			techRequirement: 'app',
+			category: ['lunch-break', 'editors-choice'],
+			tags: ['15-30 min', 'Small Team', 'Strategy'],
+			link: '#'
+		},
+		{
+			id: '8',
+			name: 'Mindfulness Moments',
+			description: 'Guided relaxation and mindfulness exercises disguised as a gentle game. Perfect for stress relief during hectic workdays.',
+			image: 'https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg?auto=compress&cs=tinysrgb&w=400',
+			duration: 'short',
+			playerCount: 'individual',
+			gameType: 'casual',
+			setting: 'break',
+			techRequirement: 'app',
+			category: ['quick-break', 'newly-added'],
+			tags: ['5-15 min', 'Individual', 'Wellness'],
+			link: '#'
+		},
+		{
+			id: '9',
+			name: 'Team Building Charades',
+			description: 'Classic charades with office and work-related themes. Encourages creativity and team interaction. Works great for both in-person and virtual teams.',
+			image: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=400',
+			duration: 'medium',
+			playerCount: 'medium',
+			gameType: 'team-building',
+			setting: 'office',
+			techRequirement: 'no-device',
+			category: ['team-building', 'friday-fun', 'most-popular'],
+			tags: ['15-30 min', 'Medium Team', 'Acting'],
+			link: '#'
+		},
+		{
+			id: '10',
+			name: 'Friday Celebration Wheel',
+			description: 'Spin the wheel for fun Friday activities and team celebrations. Includes mini-games, challenges, and team bonding activities to end the week on a high note.',
+			image: 'https://images.pexels.com/photos/1376201/pexels-photo-1376201.jpeg?auto=compress&cs=tinysrgb&w=400',
+			duration: 'short',
+			playerCount: 'large',
+			gameType: 'social',
+			setting: 'office',
+			techRequirement: 'browser',
+			category: ['friday-fun', 'team-building', 'editors-choice'],
+			tags: ['5-15 min', 'Large Team', 'Celebration'],
+			link: '#',
+			featured: true
+		}
+	];
+
+	let currentGames = [...games];
+	let activeCategory = 'all';
+	let activeFilters = {
+		duration: '',
+		playerCount: '',
+		gameType: '',
+		setting: '',
+		tech: ''
+	};
+	let searchQuery = '';
+
+	// DOM elements
+	const gamesGrid = document.getElementById('gamesGrid');
+	const resultsCount = document.getElementById('resultsCount');
+	const noResults = document.getElementById('noResults');
+	const sectionTitle = document.getElementById('sectionTitle');
+	const sectionSubtitle = document.getElementById('sectionSubtitle');
+	const searchInput = document.getElementById('searchInput');
+
+	// Category data
+	const categoryData = {
+		'all': { name: 'All Games', description: 'Discover the perfect games for your workplace' },
+		'editors-choice': { name: "Editor's Choice", description: 'Handpicked games recommended by our team' },
+		'newly-added': { name: 'Newly Added', description: 'Fresh games recently added to our collection' },
+		'most-popular': { name: 'Most Popular', description: 'Fan favorites loved by teams everywhere' },
+		'quick-break': { name: 'Quick Break Games', description: 'Perfect for short work breaks and mental refreshers' },
+		'team-building': { name: 'Team Building Essentials', description: 'Build stronger connections with your team' },
+		'remote-team': { name: 'Remote Team Activities', description: 'Engage your distributed team with these games' },
+		'meeting-engagement': { name: 'Meeting Engagement Games', description: 'Keep meetings interactive and fun' },
+		'lunch-break': { name: 'Lunch Break Entertainment', description: 'Make the most of your lunch hour' },
+		'friday-fun': { name: 'Friday Fun', description: 'End the week on a high note with celebration games' }
+	};
+
+	// Filter and render games
+	function filterAndRenderGames() {
+		let filteredGames = [...games];
+
+		// Apply category filter
+		if (activeCategory !== 'all') {
+			filteredGames = filteredGames.filter(game => 
+				game.category.includes(activeCategory)
+			);
+		}
+
+		// Apply search filter
+		if (searchQuery) {
+			const query = searchQuery.toLowerCase();
+			filteredGames = filteredGames.filter(game =>
+				game.name.toLowerCase().includes(query) ||
+				game.description.toLowerCase().includes(query) ||
+				game.tags.some(tag => tag.toLowerCase().includes(query))
+			);
+		}
+
+		// Apply other filters
+		Object.entries(activeFilters).forEach(([key, value]) => {
+			if (value) {
+				if (key === 'tech') {
+					filteredGames = filteredGames.filter(game => game.techRequirement === value);
+				} else {
+					filteredGames = filteredGames.filter(game => game[key] === value);
+				}
+			}
+		});
+
+		currentGames = filteredGames;
+		renderGames();
+		updateUI();
+	}
+
+	// Render games to grid
+	function renderGames() {
+		if (currentGames.length === 0) {
+			gamesGrid.style.display = 'none';
+			noResults.style.display = 'flex';
+			return;
+		}
+
+		gamesGrid.style.display = 'grid';
+		noResults.style.display = 'none';
+		
+		gamesGrid.innerHTML = currentGames.map(game => createGameCard(game)).join('');
+	}
+
+	// Create game card HTML
+	function createGameCard(game) {
+		const getDurationColor = (duration) => {
+			switch (duration) {
+				case 'very-short': return 'bg-green-100 text-green-800';
+				case 'short': return 'bg-blue-100 text-blue-800';
+				case 'medium': return 'bg-yellow-100 text-yellow-800';
+				case 'long': return 'bg-red-100 text-red-800';
+				default: return 'bg-gray-100 text-gray-800';
+			}
+		};
+
+		const getPlayerCountColor = (count) => {
+			switch (count) {
+				case 'individual': return 'bg-purple-100 text-purple-800';
+				case 'small': return 'bg-indigo-100 text-indigo-800';
+				case 'medium': return 'bg-pink-100 text-pink-800';
+				case 'large': return 'bg-orange-100 text-orange-800';
+				default: return 'bg-gray-100 text-gray-800';
+			}
+		};
+
+		return `
+			<div class="game-card" data-game-id="${game.id}">
+				<div class="card-header">
+					<img src="${game.image}" alt="${game.name}" class="game-image" loading="lazy" />
+					${game.featured ? '<div class="featured-badge">⭐ Featured</div>' : ''}
+				</div>
+				
+				<div class="card-content">
+					<h3 class="game-title">${game.name}</h3>
+					<p class="game-description">${game.description}</p>
+					
+					<div class="game-tags">
+						<span class="tag duration-tag ${getDurationColor(game.duration)}">
+							${game.tags.find(tag => tag.includes('min') || tag.includes('Quick'))}
+						</span>
+						<span class="tag player-tag ${getPlayerCountColor(game.playerCount)}">
+							${game.tags.find(tag => tag.includes('player') || tag.includes('Team'))}
+						</span>
+						<span class="tag type-tag">
+							${game.tags.find(tag => !tag.includes('min') && !tag.includes('player') && !tag.includes('Team') && !tag.includes('Quick'))}
+						</span>
+					</div>
+					
+					<div class="card-footer">
+						<a href="${game.link}" target="_blank" rel="noopener noreferrer" class="play-button">
+							<svg class="play-icon" fill="currentColor" viewBox="0 0 20 20">
+								<path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
+							</svg>
+							Play Now
+						</a>
+					</div>
+				</div>
+			</div>
+		`;
+	}
+
+	// Update UI elements
+	function updateUI() {
+		// Update results count
+		resultsCount.textContent = `${currentGames.length} games found`;
+		
+		// Update section title and subtitle
+		const categoryInfo = categoryData[activeCategory] || categoryData['all'];
+		sectionTitle.textContent = categoryInfo.name;
+		sectionSubtitle.textContent = categoryInfo.description;
+	}
+
+	// Event listeners
+	document.addEventListener('DOMContentLoaded', function() {
+		// Category buttons
+		document.querySelectorAll('.category-item').forEach(btn => {
+			btn.addEventListener('click', function() {
+				// Remove active class from all buttons
+				document.querySelectorAll('.category-item').forEach(b => b.classList.remove('active'));
+				
+				// Add active class to clicked button
+				this.classList.add('active');
+				
+				// Update active category
+				activeCategory = this.dataset.category;
+				filterAndRenderGames();
+			});
+		});
+
+		// Filter dropdowns
+		const filterSelects = ['durationFilter', 'playerCountFilter', 'gameTypeFilter', 'settingFilter', 'techFilter'];
+		filterSelects.forEach(id => {
+			const select = document.getElementById(id);
+			if (select) {
+				select.addEventListener('change', function() {
+					const filterKey = id.replace('Filter', '');
+					const mappedKey = filterKey === 'tech' ? 'tech' : 
+									 filterKey === 'playerCount' ? 'playerCount' :
+									 filterKey === 'gameType' ? 'gameType' :
+									 filterKey === 'setting' ? 'setting' : filterKey;
+					activeFilters[mappedKey] = this.value;
+					filterAndRenderGames();
+				});
+			}
+		});
+
+		// Search input
+		if (searchInput) {
+			searchInput.addEventListener('input', function() {
+				searchQuery = this.value;
+				filterAndRenderGames();
+			});
+		}
+
+		// Clear filters buttons
+		const clearFiltersBtn = document.getElementById('clearFilters');
+		const clearAllBtn = document.getElementById('clearAllBtn');
+		
+		function clearAllFilters() {
+			// Reset filters
+			activeFilters = {
+				duration: '',
+				playerCount: '',
+				gameType: '',
+				setting: '',
+				tech: ''
+			};
+			
+			// Reset dropdowns
+			filterSelects.forEach(id => {
+				const select = document.getElementById(id);
+				if (select) select.value = '';
+			});
+			
+			// Reset search
+			searchQuery = '';
+			if (searchInput) searchInput.value = '';
+			
+			// Reset category to all
+			activeCategory = 'all';
+			document.querySelectorAll('.category-item').forEach(btn => {
+				btn.classList.remove('active');
+			});
+			document.getElementById('cat-all')?.classList.add('active');
+			
+			filterAndRenderGames();
+		}
+
+		if (clearFiltersBtn) {
+			clearFiltersBtn.addEventListener('click', clearAllFilters);
+		}
+		if (clearAllBtn) {
+			clearAllBtn.addEventListener('click', clearAllFilters);
+		}
+
+		// Mobile menu
+		const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+		const sidebar = document.querySelector('.sidebar');
+		
+		if (mobileMenuBtn && sidebar) {
+			mobileMenuBtn.addEventListener('click', function() {
+				sidebar.classList.toggle('open');
+			});
+			
+			// Close mobile menu when clicking outside
+			document.addEventListener('click', function(e) {
+				if (!sidebar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+					sidebar.classList.remove('open');
+				}
+			});
+		}
+
+		// Set "All Games" as default active category
+		const allGamesBtn = document.querySelector('[data-category="all"]');
+		if (!allGamesBtn) {
+			// If no "all" category button exists, create one or set the first one as active
+			const firstCategoryBtn = document.querySelector('.category-item');
+			if (firstCategoryBtn) {
+				firstCategoryBtn.classList.add('active');
+				activeCategory = firstCategoryBtn.dataset.category;
+			}
+		} else {
+			allGamesBtn.classList.add('active');
+		}
+
+		// Initial render
+		filterAndRenderGames();
+	});
+
+	// Add "All Games" button to category list if it doesn't exist
+	document.addEventListener('DOMContentLoaded', function() {
+		const categoryList = document.querySelector('.category-list');
+		if (categoryList && !document.querySelector('[data-category="all"]')) {
+			const allGamesItem = document.createElement('li');
+			allGamesItem.innerHTML = `
+				<button class="category-item active" data-category="all" id="cat-all">
+					<span class="category-icon">🎮</span>
+					<span class="category-name">All Games</span>
+				</button>
+			`;
+			categoryList.insertBefore(allGamesItem, categoryList.firstChild);
+		}
+	});
+</script>
+
+<style>
+	.app-container {
+		display: flex;
+		min-height: calc(100vh - 140px);
+	}
+
+	@media (max-width: 1024px) {
+		.app-container {
+			display: block;
+		}
+	}
+
+	/* Game card styles need to be global for dynamic content */
+	:global(.game-card) {
+		background: white;
+		border-radius: 16px;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		overflow: hidden;
+		transition: all 0.3s ease;
+		position: relative;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	:global(.game-card:hover) {
+		transform: translateY(-4px);
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	}
+
+	:global(.card-header) {
+		position: relative;
+		height: 200px;
+		overflow: hidden;
+	}
+
+	:global(.game-image) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
+
+	:global(.game-card:hover .game-image) {
+		transform: scale(1.05);
+	}
+
+	:global(.featured-badge) {
+		position: absolute;
+		top: 0.75rem;
+		right: 0.75rem;
+		background: linear-gradient(135deg, #fbbf24, #f59e0b);
+		color: white;
+		padding: 0.25rem 0.75rem;
+		border-radius: 20px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	:global(.card-content) {
+		padding: 1.5rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	:global(.game-title) {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: #1e293b;
+		margin-bottom: 0.75rem;
+		line-height: 1.3;
+	}
+
+	:global(.game-description) {
+		color: #64748b;
+		font-size: 0.95rem;
+		line-height: 1.5;
+		margin-bottom: 1rem;
+		flex: 1;
+	}
+
+	:global(.game-tags) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	:global(.tag) {
+		padding: 0.25rem 0.75rem;
+		border-radius: 20px;
+		font-size: 0.75rem;
+		font-weight: 500;
+		white-space: nowrap;
+	}
+
+	:global(.type-tag) {
+		background: #f1f5f9;
+		color: #475569;
+	}
+
+	:global(.card-footer) {
+		margin-top: auto;
+	}
+
+	:global(.play-button) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		padding: 0.875rem 1.5rem;
+		background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+		color: white;
+		text-decoration: none;
+		border-radius: 12px;
+		font-weight: 500;
+		font-size: 0.95rem;
+		transition: all 0.2s ease;
+		gap: 0.5rem;
+	}
+
+	:global(.play-button:hover) {
+		background: linear-gradient(135deg, #2563eb, #1e40af);
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+	}
+
+	:global(.play-icon) {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	/* Utility classes for tags */
+	:global(.bg-green-100) { background-color: #dcfce7; }
+	:global(.text-green-800) { color: #166534; }
+	:global(.bg-blue-100) { background-color: #dbeafe; }
+	:global(.text-blue-800) { color: #1e40af; }
+	:global(.bg-yellow-100) { background-color: #fef3c7; }
+	:global(.text-yellow-800) { color: #92400e; }
+	:global(.bg-red-100) { background-color: #fee2e2; }
+	:global(.text-red-800) { color: #991b1b; }
+	:global(.bg-purple-100) { background-color: #f3e8ff; }
+	:global(.text-purple-800) { color: #6b21a8; }
+	:global(.bg-indigo-100) { background-color: #e0e7ff; }
+	:global(.text-indigo-800) { color: #3730a3; }
+	:global(.bg-pink-100) { background-color: #fce7f3; }
+	:global(.text-pink-800) { color: #9d174d; }
+	:global(.bg-orange-100) { background-color: #fed7aa; }
+	:global(.text-orange-800) { color: #9a3412; }
+	:global(.bg-gray-100) { background-color: #f3f4f6; }
+	:global(.text-gray-800) { color: #1f2937; }
+</style>

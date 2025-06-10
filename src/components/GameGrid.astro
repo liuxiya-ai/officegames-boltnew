@@ -1,0 +1,180 @@
+---
+import GameCard from './GameCard.astro';
+import type { Game } from '../data/games.ts';
+
+export interface Props {
+	games: Game[];
+}
+
+const { games } = Astro.props;
+---
+
+<main class="main-content">
+	<div class="mobile-menu-btn" id="mobileMenuBtn">
+		<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+		</svg>
+	</div>
+
+	<div class="content-header">
+		<h2 class="section-title" id="sectionTitle">All Games</h2>
+		<p class="section-subtitle" id="sectionSubtitle">Discover the perfect games for your workplace</p>
+		<div class="results-count" id="resultsCount">{games.length} games found</div>
+	</div>
+
+	<div class="games-grid" id="gamesGrid">
+		{games.map((game) => (
+			<GameCard game={game} />
+		))}
+	</div>
+
+	<div class="no-results" id="noResults" style="display: none;">
+		<div class="no-results-content">
+			<svg class="no-results-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-3-7a9 9 0 11-18 0 9 9 0 0018 0z"></path>
+			</svg>
+			<h3>No games found</h3>
+			<p>Try adjusting your filters or search terms to find the perfect game.</p>
+			<button class="clear-all-btn" id="clearAllBtn">Clear All Filters</button>
+		</div>
+	</div>
+</main>
+
+<style>
+	.main-content {
+		flex: 1;
+		padding: 2rem;
+		background: #f8fafc;
+		min-height: 100vh;
+	}
+
+	.mobile-menu-btn {
+		display: none;
+		position: fixed;
+		top: 1rem;
+		left: 1rem;
+		z-index: 1001;
+		background: white;
+		border: 1px solid #e2e8f0;
+		border-radius: 8px;
+		padding: 0.75rem;
+		cursor: pointer;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+	}
+
+	.mobile-menu-btn svg {
+		width: 1.5rem;
+		height: 1.5rem;
+		color: #64748b;
+	}
+
+	.content-header {
+		margin-bottom: 2rem;
+	}
+
+	.section-title {
+		font-size: 2rem;
+		font-weight: 700;
+		color: #1e293b;
+		margin-bottom: 0.5rem;
+	}
+
+	.section-subtitle {
+		font-size: 1.125rem;
+		color: #64748b;
+		margin-bottom: 1rem;
+	}
+
+	.results-count {
+		font-size: 0.875rem;
+		color: #8b5cf6;
+		font-weight: 500;
+		background: #f3e8ff;
+		padding: 0.5rem 1rem;
+		border-radius: 20px;
+		display: inline-block;
+	}
+
+	.games-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		gap: 1.5rem;
+		margin-bottom: 3rem;
+	}
+
+	.no-results {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 400px;
+	}
+
+	.no-results-content {
+		text-align: center;
+		max-width: 400px;
+	}
+
+	.no-results-icon {
+		width: 4rem;
+		height: 4rem;
+		color: #9ca3af;
+		margin: 0 auto 1rem;
+	}
+
+	.no-results-content h3 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: #374151;
+		margin-bottom: 0.5rem;
+	}
+
+	.no-results-content p {
+		color: #6b7280;
+		margin-bottom: 1.5rem;
+	}
+
+	.clear-all-btn {
+		background: #3b82f6;
+		color: white;
+		border: none;
+		padding: 0.75rem 1.5rem;
+		border-radius: 8px;
+		font-weight: 500;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.clear-all-btn:hover {
+		background: #2563eb;
+	}
+
+	@media (max-width: 1024px) {
+		.mobile-menu-btn {
+			display: block;
+		}
+
+		.main-content {
+			padding: 1rem;
+			padding-top: 4rem;
+		}
+
+		.games-grid {
+			grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			gap: 1rem;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.section-title {
+			font-size: 1.5rem;
+		}
+
+		.section-subtitle {
+			font-size: 1rem;
+		}
+
+		.games-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
