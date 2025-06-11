@@ -25,7 +25,7 @@ export const games: Game[] = [
 		gameType: 'social',
 		setting: 'meeting',
 		techRequirement: 'no-device',
-		category: ['team-building', 'meeting-engagement', 'editors-choice'],
+		category: ['team-building', 'meeting-engagement'],
 		tags: ['5-15 min', 'Small Team', 'Social'],
 		link: '#',
 		featured: true
@@ -68,7 +68,7 @@ export const games: Game[] = [
 		gameType: 'team-building',
 		setting: 'remote',
 		techRequirement: 'platform',
-		category: ['team-building', 'remote-team', 'editors-choice'],
+		category: ['team-building', 'remote-team'],
 		tags: ['30+ min', 'Medium Team', 'Puzzle'],
 		link: '#'
 	},
@@ -111,7 +111,7 @@ export const games: Game[] = [
 		gameType: 'strategy',
 		setting: 'office',
 		techRequirement: 'app',
-		category: ['lunch-break', 'editors-choice'],
+		category: ['lunch-break'],
 		tags: ['15-30 min', 'Small Team', 'Strategy'],
 		link: '#'
 	},
@@ -153,7 +153,7 @@ export const games: Game[] = [
 		gameType: 'social',
 		setting: 'office',
 		techRequirement: 'browser',
-		category: ['friday-fun', 'team-building', 'editors-choice'],
+		category: ['friday-fun', 'team-building'],
 		tags: ['5-15 min', 'Large Team', 'Celebration'],
 		link: '#',
 		featured: true

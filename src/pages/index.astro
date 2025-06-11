@@ -27,7 +27,7 @@ import { games } from '../data/games.ts';
 			gameType: 'social',
 			setting: 'meeting',
 			techRequirement: 'no-device',
-			category: ['team-building', 'meeting-engagement', 'editors-choice'],
+			category: ['team-building', 'meeting-engagement'],
 			tags: ['5-15 min', 'Small Team', 'Social'],
 			link: '#',
 			featured: true
@@ -70,7 +70,7 @@ import { games } from '../data/games.ts';
 			gameType: 'team-building',
 			setting: 'remote',
 			techRequirement: 'platform',
-			category: ['team-building', 'remote-team', 'editors-choice'],
+			category: ['team-building', 'remote-team'],
 			tags: ['30+ min', 'Medium Team', 'Puzzle'],
 			link: '#'
 		},
@@ -113,7 +113,7 @@ import { games } from '../data/games.ts';
 			gameType: 'strategy',
 			setting: 'office',
 			techRequirement: 'app',
-			category: ['lunch-break', 'editors-choice'],
+			category: ['lunch-break'],
 			tags: ['15-30 min', 'Small Team', 'Strategy'],
 			link: '#'
 		},
@@ -155,7 +155,7 @@ import { games } from '../data/games.ts';
 			gameType: 'social',
 			setting: 'office',
 			techRequirement: 'browser',
-			category: ['friday-fun', 'team-building', 'editors-choice'],
+			category: ['friday-fun', 'team-building'],
 			tags: ['5-15 min', 'Large Team', 'Celebration'],
 			link: '#',
 			featured: true
@@ -183,15 +183,14 @@ import { games } from '../data/games.ts';
 
 	// Category data
 	const categoryData = {
-		'all': { name: 'All Games', description: 'Discover the perfect games for your workplace' },
-		'editors-choice': { name: "Editor's Choice", description: 'Handpicked games recommended by our team' },
+		'all': { name: 'All Games', description: 'Discover fun office games and team building activities for workplace engagement' },
 		'newly-added': { name: 'Newly Added', description: 'Fresh games recently added to our collection' },
 		'most-popular': { name: 'Most Popular', description: 'Fan favorites loved by teams everywhere' },
-		'quick-break': { name: 'Quick Break Games', description: 'Perfect for short work breaks and mental refreshers' },
-		'team-building': { name: 'Team Building Essentials', description: 'Build stronger connections with your team' },
-		'remote-team': { name: 'Remote Team Activities', description: 'Engage your distributed team with these games' },
+		'quick-break': { name: 'Fun Office Games', description: 'Entertaining office activities to boost team morale and workplace energy' },
+		'team-building': { name: 'Fun Team Building Games', description: 'Strengthen team bonds with interactive and engaging activities' },
+		'remote-team': { name: 'Remote Team Building Activities', description: 'Connect virtual teams and build relationships across distances' },
 		'meeting-engagement': { name: 'Meeting Engagement Games', description: 'Keep meetings interactive and fun' },
-		'lunch-break': { name: 'Lunch Break Entertainment', description: 'Make the most of your lunch hour' },
+		'lunch-break': { name: 'Stress Relief Games', description: 'Reduce workplace tension and boost mental wellbeing' },
 		'friday-fun': { name: 'Friday Fun', description: 'End the week on a high note with celebration games' }
 	};
 
