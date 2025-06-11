@@ -4,7 +4,7 @@ const categories = [
 	{ id: 'most-popular', name: 'Most Popular', icon: '🔥' },
 	{ id: 'quick-break', name: 'Fun Office Games', icon: '⚡' },
 	{ id: 'team-building', name: 'Fun Team Building Games', icon: '🤝' },
-	{ id: 'remote-team', name: 'Remote Team Building Activities', icon: '💻' },
+	{ id: 'remote-team', name: 'Remote Team Activities', icon: '💻' },
 	{ id: 'meeting-engagement', name: 'Meeting Engagement Games', icon: '🎯' },
 	{ id: 'lunch-break', name: 'Stress Relief Games', icon: '🍽️' },
 	{ id: 'friday-fun', name: 'Friday Fun', icon: '🎉' }
@@ -138,6 +138,7 @@ const categories = [
 		cursor: pointer;
 		transition: all 0.2s ease;
 		border-left: 3px solid transparent;
+		text-align: left;
 	}
 
 	.category-item:hover {
@@ -156,6 +157,14 @@ const categories = [
 	.category-icon {
 		margin-right: 0.75rem;
 		font-size: 1.1rem;
+		flex-shrink: 0;
+	}
+
+	.category-name {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		flex: 1;
 	}
 
 	.filters-section {
