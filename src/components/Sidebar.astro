@@ -5,8 +5,7 @@ const categories = [
 	{ id: 'quick-break', name: 'Fun Office Games', icon: '⚡' },
 	{ id: 'team-building', name: 'Fun Team Building Games', icon: '🤝' },
 	{ id: 'remote-team', name: 'Remote Team Building', icon: '💻' },
-	{ id: 'meeting-engagement', name: 'Meeting Engagement Games', icon: '🎯' },
-	{ id: 'lunch-break', name: 'Stress Relief Games', icon: '🍽️' },
+	{ id: 'stress-relief', name: 'Stress Relief Games', icon: '🍽️' },
 	{ id: 'friday-fun', name: 'Friday Fun', icon: '🎉' }
 ];
 ---
@@ -39,10 +38,10 @@ const categories = [
 			<label class="filter-label">Game Duration</label>
 			<select class="filter-select" id="durationFilter">
 				<option value="">All Durations</option>
-				<option value="very-short">Super Quick (1-5 min)</option>
-				<option value="short">Short (5-15 min)</option>
-				<option value="medium">Medium (15-30 min)</option>
-				<option value="long">Long (30+ min)</option>
+				<option value="very-short">Quick (1-15 min)</option>
+				<option value="short">Short (15-30 min)</option>
+				<option value="medium">Medium (30-60 min)</option>
+				<option value="long">Long (60+ min)</option>
 			</select>
 		</div>
 

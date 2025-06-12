@@ -5,10 +5,10 @@ export interface Game {
 	description: string;
 	image: string;
 	duration: string;
-	playerCount: string;
-	gameType: string;
-	setting: string;
-	techRequirement: string;
+	playerCount: string[];
+	gameType: string[];
+	setting: string[];
+	techRequirement: string[];
 	category: string[];
 	tags: string[];
 	link: string;
@@ -56,7 +56,7 @@ const getPlayerCountColor = (count: string) => {
 			<span class={`tag duration-tag ${getDurationColor(game.duration)}`}>
 				{game.tags.find(tag => tag.includes('min') || tag.includes('Quick'))}
 			</span>
-			<span class={`tag player-tag ${getPlayerCountColor(game.playerCount)}`}>
+			<span class={`tag player-tag ${getPlayerCountColor(game.playerCount[0] || '')}`}>
 				{game.tags.find(tag => tag.includes('player') || tag.includes('Team'))}
 			</span>
 			<span class="tag type-tag">

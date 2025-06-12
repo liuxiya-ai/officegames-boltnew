@@ -14,154 +14,8 @@ import { games } from '../data/games.ts';
 	</div>
 </Layout>
 
-<script>
+<script define:vars={{ games }}>
 	// Game filtering and search functionality
-	const games = [
-		{
-			id: '1',
-			name: 'Two Truths and a Lie',
-			description: 'A classic icebreaker where players share three statements about themselves - two true and one false. Perfect for team building and getting to know colleagues better.',
-			image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',
-			duration: 'short',
-			playerCount: 'small',
-			gameType: 'social',
-			setting: 'meeting',
-			techRequirement: 'no-device',
-			category: ['team-building', 'meeting-engagement'],
-			tags: ['5-15 min', 'Small Team', 'Social'],
-			link: '#',
-			featured: true
-		},
-		{
-			id: '2',
-			name: 'Online Trivia Challenge',
-			description: 'Interactive trivia game with workplace-friendly questions. Multiple categories including general knowledge, pop culture, and fun facts to engage remote teams.',
-			image: 'https://images.pexels.com/photos/355948/pexels-photo-355948.jpeg?auto=compress&cs=tinysrgb&w=400',
-			duration: 'medium',
-			playerCount: 'medium',
-			gameType: 'puzzle',
-			setting: 'remote',
-			techRequirement: 'browser',
-			category: ['remote-team', 'friday-fun', 'most-popular'],
-			tags: ['15-30 min', 'Medium Team', 'Trivia'],
-			link: '#'
-		},
-		{
-			id: '3',
-			name: 'Quick Draw Challenge',
-			description: 'Fast-paced drawing game perfect for short breaks. Players draw prompts while others guess. Great for creativity and laughs during busy workdays.',
-			image: 'https://images.pexels.com/photos/3803517/pexels-photo-3803517.jpeg?auto=compress&cs=tinysrgb&w=400',
-			duration: 'very-short',
-			playerCount: 'small',
-			gameType: 'casual',
-			setting: 'break',
-			techRequirement: 'browser',
-			category: ['quick-break', 'lunch-break', 'newly-added'],
-			tags: ['1-5 min', 'Small Team', 'Creative'],
-			link: '#'
-		},
-		{
-			id: '4',
-			name: 'Virtual Escape Room',
-			description: 'Collaborative puzzle-solving adventure that builds teamwork. Teams work together to solve clues and escape within the time limit. Excellent for team bonding.',
-			image: 'https://images.pexels.com/photos/4545982/pexels-photo-4545982.jpeg?auto=compress&cs=tinysrgb&w=400',
-			duration: 'long',
-			playerCount: 'medium',
-			gameType: 'team-building',
-			setting: 'remote',
-			techRequirement: 'platform',
-			category: ['team-building', 'remote-team'],
-			tags: ['30+ min', 'Medium Team', 'Puzzle'],
-			link: '#'
-		},
-		{
-			id: '5',
-			name: 'Word Association Sprint',
-			description: 'Lightning-fast word game where players build chains of associated words. Perfect brain exercise for busy professionals looking for a quick mental break.',
-			image: 'https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=400',
-			duration: 'very-short',
-			playerCount: 'individual',
-			gameType: 'puzzle',
-			setting: 'break',
-			techRequirement: 'no-device',
-			category: ['quick-break', 'newly-added'],
-			tags: ['1-5 min', 'Individual', 'Brain Game'],
-			link: '#'
-		},
-		{
-			id: '6',
-			name: 'Virtual Bingo - Office Edition',
-			description: 'Office-themed bingo with workplace scenarios and remote work situations. Great for meetings and team calls to keep everyone engaged.',
-			image: 'https://images.pexels.com/photos/8761815/pexels-photo-8761815.jpeg?auto=compress&cs=tinysrgb&w=400',
-			duration: 'medium',
-			playerCount: 'large',
-			gameType: 'social',
-			setting: 'meeting',
-			techRequirement: 'browser',
-			category: ['meeting-engagement', 'remote-team', 'most-popular'],
-			tags: ['15-30 min', 'Large Team', 'Interactive'],
-			link: '#',
-			featured: true
-		},
-		{
-			id: '7',
-			name: 'Strategy Showdown',
-			description: 'Turn-based strategy game that challenges critical thinking. Players make tactical decisions in bite-sized sessions perfect for lunch breaks.',
-			image: 'https://images.pexels.com/photos/1040157/pexels-photo-1040157.jpeg?auto=compress&cs=tinysrgb&w=400',
-			duration: 'medium',
-			playerCount: 'small',
-			gameType: 'strategy',
-			setting: 'office',
-			techRequirement: 'app',
-			category: ['lunch-break'],
-			tags: ['15-30 min', 'Small Team', 'Strategy'],
-			link: '#'
-		},
-		{
-			id: '8',
-			name: 'Mindfulness Moments',
-			description: 'Guided relaxation and mindfulness exercises disguised as a gentle game. Perfect for stress relief during hectic workdays.',
-			image: 'https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg?auto=compress&cs=tinysrgb&w=400',
-			duration: 'short',
-			playerCount: 'individual',
-			gameType: 'casual',
-			setting: 'break',
-			techRequirement: 'app',
-			category: ['quick-break', 'newly-added'],
-			tags: ['5-15 min', 'Individual', 'Wellness'],
-			link: '#'
-		},
-		{
-			id: '9',
-			name: 'Team Building Charades',
-			description: 'Classic charades with office and work-related themes. Encourages creativity and team interaction. Works great for both in-person and virtual teams.',
-			image: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=400',
-			duration: 'medium',
-			playerCount: 'medium',
-			gameType: 'team-building',
-			setting: 'office',
-			techRequirement: 'no-device',
-			category: ['team-building', 'friday-fun', 'most-popular'],
-			tags: ['15-30 min', 'Medium Team', 'Acting'],
-			link: '#'
-		},
-		{
-			id: '10',
-			name: 'Friday Celebration Wheel',
-			description: 'Spin the wheel for fun Friday activities and team celebrations. Includes mini-games, challenges, and team bonding activities to end the week on a high note.',
-			image: 'https://images.pexels.com/photos/1376201/pexels-photo-1376201.jpeg?auto=compress&cs=tinysrgb&w=400',
-			duration: 'short',
-			playerCount: 'large',
-			gameType: 'social',
-			setting: 'office',
-			techRequirement: 'browser',
-			category: ['friday-fun', 'team-building'],
-			tags: ['5-15 min', 'Large Team', 'Celebration'],
-			link: '#',
-			featured: true
-		}
-	];
-
 	let currentGames = [...games];
 	let activeCategory = 'all';
 	let activeFilters = {
@@ -189,8 +43,7 @@ import { games } from '../data/games.ts';
 		'quick-break': { name: 'Fun Office Games', description: 'Entertaining office activities to boost team morale and workplace energy' },
 		'team-building': { name: 'Fun Team Building Games', description: 'Strengthen team bonds with interactive and engaging activities' },
 		'remote-team': { name: 'Remote Team Building', description: 'Connect virtual teams and build relationships across distances' },
-		'meeting-engagement': { name: 'Meeting Engagement Games', description: 'Keep meetings interactive and fun' },
-		'lunch-break': { name: 'Stress Relief Games', description: 'Reduce workplace tension and boost mental wellbeing' },
+		'stress-relief': { name: 'Stress Relief Games', description: 'Reduce workplace tension and boost mental wellbeing' },
 		'friday-fun': { name: 'Friday Fun', description: 'End the week on a high note with celebration games' }
 	};
 
@@ -219,7 +72,13 @@ import { games } from '../data/games.ts';
 		Object.entries(activeFilters).forEach(([key, value]) => {
 			if (value) {
 				if (key === 'tech') {
-					filteredGames = filteredGames.filter(game => game.techRequirement === value);
+					filteredGames = filteredGames.filter(game => game.techRequirement.includes(value));
+				} else if (key === 'playerCount') {
+					filteredGames = filteredGames.filter(game => game.playerCount.includes(value));
+				} else if (key === 'gameType') {
+					filteredGames = filteredGames.filter(game => game.gameType.includes(value));
+				} else if (key === 'setting') {
+					filteredGames = filteredGames.filter(game => game.setting.includes(value));
 				} else {
 					filteredGames = filteredGames.filter(game => game[key] === value);
 				}
@@ -282,7 +141,7 @@ import { games } from '../data/games.ts';
 						<span class="tag duration-tag ${getDurationColor(game.duration)}">
 							${game.tags.find(tag => tag.includes('min') || tag.includes('Quick'))}
 						</span>
-						<span class="tag player-tag ${getPlayerCountColor(game.playerCount)}">
+						<span class="tag player-tag ${getPlayerCountColor(game.playerCount[0] || '')}">
 							${game.tags.find(tag => tag.includes('player') || tag.includes('Team'))}
 						</span>
 						<span class="tag type-tag">
