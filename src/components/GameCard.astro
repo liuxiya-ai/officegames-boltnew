@@ -21,24 +21,14 @@ export interface Props {
 
 const { game } = Astro.props;
 
-const getDurationColor = (duration: string) => {
-	switch (duration) {
-		case 'very-short': return 'bg-green-100 text-green-800';
-		case 'short': return 'bg-blue-100 text-blue-800';
-		case 'medium': return 'bg-yellow-100 text-yellow-800';
-		case 'long': return 'bg-red-100 text-red-800';
-		default: return 'bg-gray-100 text-gray-800';
-	}
-};
-
-const getPlayerCountColor = (count: string) => {
-	switch (count) {
-		case 'individual': return 'bg-purple-100 text-purple-800';
-		case 'small': return 'bg-indigo-100 text-indigo-800';
-		case 'medium': return 'bg-pink-100 text-pink-800';
-		case 'large': return 'bg-orange-100 text-orange-800';
-		default: return 'bg-gray-100 text-gray-800';
-	}
+// Simple tag color assignment based on content (for display only)
+const getTagColor = (tag: string) => {
+	if (tag.includes('min') || tag.toLowerCase().includes('quick')) return 'bg-green-100 text-green-800';
+	if (tag.toLowerCase().includes('team') || tag.toLowerCase().includes('player') || tag.toLowerCase().includes('individual')) return 'bg-blue-100 text-blue-800';
+	if (tag.toLowerCase().includes('creative') || tag.toLowerCase().includes('brain')) return 'bg-purple-100 text-purple-800';
+	if (tag.toLowerCase().includes('strategy')) return 'bg-yellow-100 text-yellow-800';
+	if (tag.toLowerCase().includes('interactive') || tag.toLowerCase().includes('social')) return 'bg-pink-100 text-pink-800';
+	return 'bg-gray-100 text-gray-800';
 };
 ---
 
@@ -53,15 +43,11 @@ const getPlayerCountColor = (count: string) => {
 		<p class="game-description">{game.description}</p>
 		
 		<div class="game-tags">
-			<span class={`tag duration-tag ${getDurationColor(game.duration)}`}>
-				{game.tags.find(tag => tag.includes('min') || tag.includes('Quick'))}
-			</span>
-			<span class={`tag player-tag ${getPlayerCountColor(game.playerCount[0] || '')}`}>
-				{game.tags.find(tag => tag.includes('player') || tag.includes('Team'))}
-			</span>
-			<span class="tag type-tag">
-				{game.tags.find(tag => !tag.includes('min') && !tag.includes('player') && !tag.includes('Team') && !tag.includes('Quick'))}
-			</span>
+			{game.tags.map((tag, index) => (
+				<span class={`tag ${getTagColor(tag)}`} key={index}>
+					{tag}
+				</span>
+			))}
 		</div>
 		
 		<div class="card-footer">
